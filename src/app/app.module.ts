@@ -5,12 +5,10 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 import { HttpClientModule } from '@angular/common/http';
-import { ThousandSeparatorPipe } from './shared/pipes/thousand-separator.pipe';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    ThousandSeparatorPipe
+    AppComponent
   ],
   imports: [
     BrowserModule,

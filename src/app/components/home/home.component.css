@@ -5,3 +5,11 @@
 .soft-font {
     font-weight: 300;
 }
+
+* {
+    font-size: 14px;
+}
+
+h2 {
+    font-size: larger;
+}

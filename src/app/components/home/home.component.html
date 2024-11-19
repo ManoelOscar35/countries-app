@@ -16,10 +16,10 @@
                 <option value="Oceania" class="medium-font">Oceania</option>
             </select>
         </div>
-        <div class="flex flex-wrap gap-4 w-full mt-10">
+        <div class="flex flex-wrap gap-4  mt-10 mr-3">
             <div class="flex flex-col bg-white shadow-lg rounded-lg overflow-hidden w-full sm:w-[45%] md:w-[30%] lg:w-[23%]" *ngFor="let country of countries">
               <!-- Imagem do Card -->
-              <img class="w-auto h-48 object-cover" [src]="country.flags.png" alt="Imagem do Card">
+              <img class="w-auto h-48 object-cover hover:cursor-pointer" (click)="setCountry(country)" routerLink="/detail" [src]="country.flags.png" alt="Imagem do Card">
             
               <!-- Corpo do Card -->
               <div class="p-4">

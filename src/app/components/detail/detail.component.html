@@ -1,1 +1,47 @@
-<p class="text-black">detail works!</p>
+<main>
+    <div class="container">
+        <button class="flex items-center bg-white text-black border-2 border-gray-300 shadow-sm mt-20 ml-14 px-4 py-1 rounded-lg " routerLink="/home" >
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+            </svg>
+            Back
+        </button>
+        <div class="flex flex-col justify-start items-start sm:flex-row gap-4 p-6 mr-6">  
+            <!-- Imagem -->
+            <img class="w-full sm:w-1/2 h-auto object-cover rounded-lg mt-14 mx-8" [src]="country.flags?.png" alt="Imagem do Card">
+                
+            <div class="mt-12  text-center sm:text-left sm:w-1/2">
+                <div class="flex flex-col justify-start items-start ml-3 sm:mt-10 sm:flex-row-gap-4-p-6-h-1/2">
+                    <div class="mb-5 ml-5 sm:mr-24 mt-2  text-left sm:text-left sm:mb-3 sm:-mt-2 sm:w-1/2">
+                        <h2 class="text-xl mb-5 text-black medium-font">{{country.name.common}}</h2>
+                        <p class="text-black text-base mb-2 soft-font">Native Name: {{country.name.official}}</p>
+                        <p class="text-black text-base mb-2 soft-font">Population: {{country.population | thousandSeparator}}</p>
+                        <p class="text-black text-base mb-2 soft-font">Region: {{country.region}}</p>
+                        <p class="text-black text-base mb-2 soft-font">Sub Region: {{country.subregion}}</p>
+                        <p class="text-black text-base soft-font">Capital: {{country.capital}}</p>
+                    </div>
+                    <div class="mt-10 ml-5  text-left sm:text-left sm:w-1/2 sm:relative sm:-top-44  sm:left-96" style="margin-top: 5px;">
+                        <p class="text-black text-base mb-2 soft-font">Top Level Domain: {{country.tld}}</p>
+                        <p *ngIf="getCurrencyDetails(country.currencies) as currency" class="text-black text-base mb-2 soft-font" >
+                            Currency: {{ currency.name }} ({{ currency.symbol }})
+                        </p>
+                        <p class="text-black text-base mb-2 soft-font">Languages:  {{ getLanguages(country.languages) }}</p>
+                    </div>
+                    <div class="relative top-5 left-5 mb-5 mr-5 sm:relative sm:-top-8 sm:left-5">
+                        <div  *ngIf="country.borders?.length > 0; else noBorders" class="flex items-start">
+                            <span class=" mr-3 text-left text-black">Borders Countries: </span>
+                            <div class="flex flex-grow" *ngFor="let border of getBorderCountries(country.borders)">
+                                <a routerLink="#" class="text-center ml-2 text-xs text-gray-500 border-2 border-gray-300 shadow-md px-2 py-1">{{border}}</a>   
+                            </div>     
+                        </div>
+                        <ng-template #noBorders>
+                            <a routerLink="#" class="mt-10  sm:mt-5 mr-4 text-center text-black border-b-2 border-gray-300 shadow-md px-3 py-2">No borders</a>
+                        </ng-template>
+                    </div>
+                </div>
+            </div>
+           
+        </div>
+        
+    </div>    
+</main>
