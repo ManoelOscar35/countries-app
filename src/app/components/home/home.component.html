@@ -1,7 +1,35 @@
-<div class="container">
-    <main>
-        <div class="container-main">
-            <h1 routerLink="/home" class="text-red-500">Home aqui!</h1>
+<main>
+    <div class="container  mx-10 my-10 px-4">
+        <div class="flex flex-wrap gap-6 sm:flex justify-between">
+            <div class="relative">
+                <input type="text" class="p-2 md:w-[200%] bg-white border border-gray-300 rounded-md placeholder:text-center" placeholder="Search for a country">
+                <div class="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 ">
+                    <svg class="hover:cursor-pointer" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--!Font Awesome Free 6.7.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z"/></svg>
+                </div>
+            </div>
+            <select class="p-2 mr-20 md:w-[10%]  bg-white font text-black border border-gray-300 rounded-md">
+                <option value="" hidden class="medium-font">Filter by Region</option>
+                <option value="Africa" class="medium-font">África</option>
+                <option value="América" class="medium-font">América</option>
+                <option value="Asia" class="medium-font">Ásia</option>
+                <option value="Europe" class="medium-font">Europe</option>
+                <option value="Oceania" class="medium-font">Oceania</option>
+            </select>
         </div>
-    </main>
-</div>
+        <div class="flex flex-wrap gap-4 w-full mt-10">
+            <div class="flex flex-col bg-white shadow-lg rounded-lg overflow-hidden w-full sm:w-[45%] md:w-[30%] lg:w-[23%]" *ngFor="let country of countries">
+              <!-- Imagem do Card -->
+              <img class="w-auto h-48 object-cover" [src]="country.flags.png" alt="Imagem do Card">
+            
+              <!-- Corpo do Card -->
+              <div class="p-4">
+                <h2 class="text-xl mb-2 text-black medium-font">{{country.name.common}}</h2>
+                <p class="text-black text-base mb-2 soft-font">Population: {{country.population | thousandSeparator}}</p>
+                <p class="text-black text-base mb-2 soft-font">Region: {{country.region}}</p>
+                <p class="text-black text-base soft-font">Capital: {{country.capital}}</p>
+              </div>
+            </div>
+        </div>          
+    </div>
+</main>
+

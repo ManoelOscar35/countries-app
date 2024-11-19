@@ -3,11 +3,13 @@ import { CommonModule } from '@angular/common';
 
 import { HomeRoutingModule } from './home-routing.module';
 import { HomeComponent } from './home.component';
+import { ThousandSeparatorPipe } from 'src/app/shared/pipes/thousand-separator.pipe';
 
 
 @NgModule({
   declarations: [
-    HomeComponent
+    HomeComponent,
+    ThousandSeparatorPipe
   ],
   imports: [
     CommonModule,
