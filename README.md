@@ -1,3 +1,11 @@
+<h1>Desafio Crosoften</h1>
+<p>Esse projeto foi feito com Tailwind CSS</p>
+<p>Pra criar a pasta node_modules basta rodar esse comando: npm install</p>
+<p>Pra rodar a aplicação basta rodar o seguinte comando: ng serve</p>
+<p>A aplicação está servida na seguinte url: http://localhost:4200</p>
+
+<h2>Outras informações a seguir: </h2>
+
 # DesafioCrosoften
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.11.
