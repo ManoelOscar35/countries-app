@@ -3,17 +3,17 @@ import { CommonModule } from '@angular/common';
 
 import { DetailRoutingModule } from './detail-routing.module';
 import { DetailComponent } from './detail.component';
-import { ThousandSeparatorPipe } from 'src/app/shared/pipes/thousand-separator.pipe';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 
 @NgModule({
   declarations: [
-    DetailComponent,
-    ThousandSeparatorPipe
+    DetailComponent
   ],
   imports: [
     CommonModule,
-    DetailRoutingModule
+    DetailRoutingModule,
+    SharedModule
   ]
 })
 export class DetailModule { }

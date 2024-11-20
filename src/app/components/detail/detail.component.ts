@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Subject, takeUntil } from 'rxjs';
 import { ApiService } from 'src/app/services/api.service';
 import { StoreService } from 'src/app/shared/store.service';
 
@@ -7,10 +8,12 @@ import { StoreService } from 'src/app/shared/store.service';
   templateUrl: './detail.component.html',
   styleUrls: ['./detail.component.css']
 })
-export class DetailComponent implements OnInit{
+export class DetailComponent implements OnInit, OnDestroy {
 
   public country: any;
   public countries: any[] = [];
+
+  unsubscribe$: Subject<any> = new Subject<any>();
 
   constructor(
     private storeService: StoreService,
@@ -23,7 +26,7 @@ export class DetailComponent implements OnInit{
   }
 
   getCountry() {
-    this.storeService.getCountry().subscribe({
+    this.storeService.getCountry().pipe(takeUntil(this.unsubscribe$)).subscribe({
       next: (res: any) => {
         console.log(res),
         this.country = res;
@@ -32,7 +35,7 @@ export class DetailComponent implements OnInit{
   }
 
   getCountries() {
-    this.apiService.getCountries().subscribe({
+    this.apiService.getCountries().pipe(takeUntil(this.unsubscribe$)).subscribe({
       next: (res: any) => {
         this.countries = res;
       }
@@ -68,6 +71,8 @@ export class DetailComponent implements OnInit{
     return [];
   }
   
-
+  ngOnDestroy(): void {
+    this.unsubscribe$.next([]);
+  }
  
 }
